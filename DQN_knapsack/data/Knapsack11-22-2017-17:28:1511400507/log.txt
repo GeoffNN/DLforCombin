@@ -1,0 +1,2 @@
+Timestep	AtRandomAverageReturn	AverageReturn	OptimalAverageReturn	MaxReturn	Episodes	Exploration	LearningRate
+10000	0.844252792541	1.15580132883	1.50961657234	1.15580132883	1088	0.991	0.0001

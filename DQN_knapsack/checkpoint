@@ -1,0 +1,6 @@
+model_checkpoint_path: "DQN_knapsack_model-learning_freq=4-850000"
+all_model_checkpoint_paths: "DQN_knapsack_model-learning_freq=4-810000"
+all_model_checkpoint_paths: "DQN_knapsack_model-learning_freq=4-820000"
+all_model_checkpoint_paths: "DQN_knapsack_model-learning_freq=4-830000"
+all_model_checkpoint_paths: "DQN_knapsack_model-learning_freq=4-840000"
+all_model_checkpoint_paths: "DQN_knapsack_model-learning_freq=4-850000"
