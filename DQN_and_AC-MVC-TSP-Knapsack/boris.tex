@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+\section{Modified Encoder for Pointer Network}
+Since the original pointer network architecture is based on a LSTM encoder-decoder model, it is likely to be suspectible to the same problems of being unable to leverage long range information. This is especially critical as the architecture is presented for combinatoric problems where the ordering of the input sequence is irrelevant. We propose a modified encoder network based on dilated CNNs with gated activation units and skipped connections. Specifically, let $x_k$ be the output of layer $k$, then,
+\begin{align}
+x_{k} = x_{k-1} + [\tanh(W_{f,k}* x_{k-1})\odot\sigma(W_{g,k}* x_{k-1})]
+\end{align}
+where $*$ denotes a dilated convolution operator, $\odot$ denotes an element-wise multiplication, $\sigma(\cdot)$ is the sigmoid function, and $W_{(f,g),k}$ are learnable filters. For the first layer, $x_{-1}$ are the embedded inputs to the network and we did not include the skip connection. \\
+
+In order to initialize the decoder LSTM hidden state and utilize the attention mechanism, we concatenated the outputs of each layer to form the collection of encoder outputs. For the initial decoder hidden state, we applied average pooling to this encoder outputs collection. 
+
+\end{document}
