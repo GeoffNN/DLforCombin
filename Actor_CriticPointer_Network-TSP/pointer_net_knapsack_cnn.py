@@ -57,7 +57,7 @@ def pointer_network(enc_inputs, decoder_targets,
         conv = []
         conv.append(makeCNNLayer(embedded_inputs, filters=hidden_size/4, dilation=1))
         # make the other layers
-        numDilationLayer = 4
+        numDilationLayer = 3
         factors = [2, 4, 8]
         for layerNum in range(0, numDilationLayer):
             conv.append(makeCNNLayer(conv[-1], filters=hidden_size/4, dilation=factors[layerNum], residual=True))
