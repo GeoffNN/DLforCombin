@@ -46,16 +46,16 @@ def critic_network(enc_inputs,
 
         # Define encoder
         with tf.variable_scope("encoder"):
-            conv = [embedded_inputs]
-
+            conv = []
+            conv.append(makeCNNLayer(embedded_inputs, filters=hidden_size/4, dilation=1))
             # make the other layers
             numDilationLayer = 4
-            factors = [1, 2, 4, 8]
+            factors = [2, 4, 8]
             for layerNum in range(0, numDilationLayer):
-                conv.append(makeCNNLayer(conv[-1], filters=hidden_size, dilation=factors[layerNum], residual=True))
+                conv.append(makeCNNLayer(conv[-1], filters=hidden_size/4, dilation=factors[layerNum], residual=True))
 
-            # enc_outputs = tf.concat(conv, axis=2)
-            enc_outputs = conv[-1]
+            enc_outputs = tf.concat(conv, axis=2)
+            # enc_outputs = conv[-1]
 
             # avg pooling to mimic lstm state
             enc_final_state_c = tf.reduce_mean(enc_outputs, axis=1)
